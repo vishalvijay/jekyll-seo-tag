@@ -32,6 +32,12 @@ module Jekyll
       end
       alias_method :to_s, :path
 
+      def raw_path
+        @raw_path ||= begin
+          image_hash["path"] || image_hash["facebook"] || image_hash["twitter"]
+        end
+      end
+
       private
 
       attr_accessor :page
@@ -48,12 +54,6 @@ module Jekyll
                         end
       end
       alias_method :fallback_data, :image_hash
-
-      def raw_path
-        @raw_path ||= begin
-          image_hash["path"] || image_hash["facebook"] || image_hash["twitter"]
-        end
-      end
 
       def absolute_url
         return unless raw_path

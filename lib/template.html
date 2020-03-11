@@ -30,7 +30,7 @@
 {% endif %}
 
 {% if seo_tag.image %}
-  <meta property="og:image" content="{{ seo_tag.image.raw_path }}" />
+  <meta property="og:image" content="{{ seo_tag.image.raw_path | asset:'@path' }}" />
   {% if seo_tag.image.height %}
     <meta property="og:image:height" content="{{ seo_tag.image.height }}" />
   {% endif %}
